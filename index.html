@@ -1,0 +1,21 @@
+<html>
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(["init", {
+      appId: "857a17b6-40b4-4e9b-ac71-7d8f1264edce",
+      autoRegister: true,
+      notifyButton: {
+        enable: false
+      },
+      
+      welcomeNotification: {
+        "title": "MoarCatz",
+        "message": "Благодарим за подписку!"
+      }
+    }]);
+  </script>
+</head>
+</html>
