@@ -50,6 +50,18 @@
     </script>
 
     <script>
+      OneSignal.push(function() {
+        var isPushSupported = OneSignal.isPushNotificationsSupported();
+        if (!isPushSupported) {
+          document.getElementById("class").disabled = true;
+          document.getElementById("letter").disabled = true;
+          document.getElementById("enable").disabled = true;
+          document.getElementById("disable").disabled = true;
+        }
+      });
+    </script>
+
+    <script>
       function subscribe() {
         OneSignal.push(function() {
           OneSignal.registerForPushNotifications();
