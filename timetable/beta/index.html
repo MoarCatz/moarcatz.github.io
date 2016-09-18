@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon"
+    href="https://cdn0.iconfinder.com/data/icons/ikooni-outline-free-basic/128/free-20-16.png"
+    type="image/x-icon" />
+    <title>Timetable Beta</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,700,700i&subset=cyrillic" rel="stylesheet" />
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" />
+
+    <!-- Milligram Framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.min.css" />
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+    <script>
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(["init", {
+        appId: "bbea4a4c-c1b1-48d1-9205-c113f917b7e4",
+        autoRegister: false, /* Set to true to automatically prompt visitors */
+        subdomainName: 'test-timetable',
+        notifyButton: {
+          enable: false /* Set to false to hide */
+        },
+        welcomeNotification: {
+          title: 'Timetable Beta',
+          message: 'Так будут выглядеть уведомления. Добро пожаловать!'
+        }
+      }]);
+    </script>
+
+    <script>
+      function subscribe() {
+        OneSignal.push(function() {
+          OneSignal.registerForPushNotifications();
+        });
+
+        OneSignal.push(function() {
+          OneSignal.sendTags({
+            class: document.getElementById("class").value,
+            letter: document.getElementById("letter").value,
+          });
+        });
+
+        document.getElementById("enable").style.background='#606c76';
+        document.getElementById("enable").value='Готово!'
+      }
+    </script>
+
+    <script>
+      function unsubscribe() {
+        OneSignal.push(["setSubscription", false]);
+
+        document.getElementById("disable").value='Готово!'
+      }
+    </script>
+</head>
+
+<body>
+    <div class="container" id="name">
+      <div class="column" style="margin: 40px;">
+        <h1 align="center">Timetable Beta</h1>
+
+        <p align="center">
+          Данная страничка предназначена для тестирования нового
+          функционала скрипта.
+        </p>
+
+        <br />
+
+        <hr />
+
+        <h3 align="center" id="setup_head">Подключение</h3>
+
+        <form>
+          <fieldset>
+            <p id="setup_hint"></p>
+
+            <label for="class">Выбери класс...</label>
+            <select id="class">
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+            </select>
+
+            <label for="letter">...и букву</label>
+            <select id="letter">
+              <option value="А">А</option>
+              <option value="Б">Б</option>
+              <option value="В">В</option>
+              <option value="Г">Г</option>
+              <option value="Д">Д</option>
+              <option value="Е">Е</option>
+              <option value="З">З</option>
+              <option value="К">К</option>
+              <option value="Л">Л</option>
+              <option value="С">С</option>
+              <option value="М">М</option>
+            </select>
+
+            <input class="button-primary"
+            type="submit" value="включить"
+            id="enable" onclick="subscribe(); return false;" />
+
+            <input class="button button-clear"
+            type="submit" id="disable" value="выключить"
+            onclick="unsubscribe(); return false;" />
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+</body>
+
+</html>
